@@ -23,3 +23,4 @@ file_url = 'https://iac.university/storage/IAC_Database.zip'
 destination_path = '/Users/maanitmalhan/Documents/IAC Center/excel-data-iac/IAC_Database.zip'
 
 download_file(file_url, destination_path)
+print("File downloaded successfully!")

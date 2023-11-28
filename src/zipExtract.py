@@ -34,3 +34,4 @@ extraction_path = '/Users/maanitmalhan/Documents/IAC Center/excel-data-iac'
 os.makedirs(extraction_path, exist_ok=True)
 
 extract_file(zip_file_path, file_to_extract, extraction_path)
+print("File extracted successfully!")
