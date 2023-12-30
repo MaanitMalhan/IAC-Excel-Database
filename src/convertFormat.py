@@ -1,6 +1,6 @@
-import xlrd
+
 from openpyxl import Workbook
-import zipfile, os, time
+import os, time
 from datetime import datetime, timedelta
 import pandas as pd
 
@@ -8,26 +8,30 @@ import pandas as pd
 current_date = datetime.now()
 
 # Calculate the date from yesterday
-yesterday = current_date - timedelta(days=1)
-date = yesterday.strftime('%Y%m%d')
-
+date = current_date.strftime('%Y%m%d')
 
 
 def convert_xls_to_xlsx(input_path, output_path):
-    # Read the .xls file into a pandas ExcelFile object
-    xls_file = pd.ExcelFile(input_path)
+    xls_file_path = input_path
+    xlsx_file_path = output_path
+    xls = pd.ExcelFile(xls_file_path)
 
-    # Create a new .xlsx file and writer object
-    with pd.ExcelWriter(output_path, engine='openpyxl') as xlsx_writer:
-        # Iterate through each sheet in the .xls file and write to the .xlsx file
-        for sheet_name in xls_file.sheet_names:
-            xls_sheet = xls_file.parse(sheet_name)
-            xls_sheet.to_excel(xlsx_writer, sheet_name=sheet_name, index=False)
+
+    with pd.ExcelWriter(xlsx_file_path, engine='xlsxwriter') as writer:
+    # Iterate over each sheet in the .xls file
+        for sheet_name in xls.sheet_names:
+        # Read the sheet from .xls
+            df = pd.read_excel(xls_file_path, sheet_name=sheet_name)
+
+        # Write the sheet to .xlsx
+            df.to_excel(writer, sheet_name=sheet_name, index=False)
+
 
     print(f"Conversion complete. Output file saved at: {output_path}")
 
 
-    input_path = f"/Users/maanitmalhan/Documents/IAC Center/excel-data-iac/IAC_Database_20231224.xls"#NAME FOR TESTING
-    output_path = f"/Users/maanitmalhan/Documents/IAC Center/excel-data-iac/IAC_Database_{date}.xlxs"
+input_path = f"/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database_{date}.xls"
+output_path = f"/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database_{date}.xlsx"
     
-    convert_xls_to_xlsx(input_path, output_path)
+convert_xls_to_xlsx(input_path, output_path)
+print("File converted successfully!")

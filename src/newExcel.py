@@ -3,17 +3,16 @@ import os
 from datetime import datetime, timedelta
 
 current_date = datetime.now()
-yesterday = current_date - timedelta(days=1)
-date = yesterday.strftime('%Y%m%d')
+date = current_date.strftime('%Y%m%d')
 
-iac_workbook = openpyxl.load_workbook(f'/Users/maanitmalhan/Documents/IAC Center/excel-data-iac/IAC_Database_{date}.xlxs')
+iac_workbook = openpyxl.load_workbook(f'/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database_20231230.xls')
 iac_assess_worksheet = iac_workbook["ASSESS"]
 
 sne_workbook = openpyxl.Workbook()
 sne_worksheet = sne_workbook.active
 sne_worksheet.title = "CopiedRows"
 
-sne_workbook.save('/Users/maanitmalhan/Documents/IAC Center/excel-data-iac/SNE_IAC_Database.xls')
+sne_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xls')
 
 
 def copy_rows_containing_value(source_file, source_sheet, column_name, search_value, destination_file, destination_sheet):
