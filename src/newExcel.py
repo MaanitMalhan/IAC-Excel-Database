@@ -6,7 +6,7 @@ current_date = datetime.now()
 yesterday = current_date - timedelta(days=1)
 date = yesterday.strftime('%Y%m%d')
 
-iac_workbook = openpyxl.load_workbook(f'/Users/maanitmalhan/Documents/IAC Center/excel-data-iac/IAC_Database_{date}.xls')
+iac_workbook = openpyxl.load_workbook(f'/Users/maanitmalhan/Documents/IAC Center/excel-data-iac/IAC_Database_{date}.xlxs')
 iac_assess_worksheet = iac_workbook["ASSESS"]
 
 sne_workbook = openpyxl.Workbook()
