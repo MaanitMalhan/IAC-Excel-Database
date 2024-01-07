@@ -1,0 +1,3 @@
+([('app',
+   '/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/src/dist/app',
+   'EXECUTABLE')],)
