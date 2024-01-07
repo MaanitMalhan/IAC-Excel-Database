@@ -4,8 +4,8 @@ import convertFormat
 from datetime import datetime, timedelta
 
 current_date = datetime.now()
-#yesterday = current_date - timedelta(days=1)    
-date = today = current_date.strftime('%Y%m%d')
+yesterday = current_date - timedelta(days=1)    
+date = yesterday.strftime('%Y%m%d')
 
 file_url = 'https://iac.university/storage/IAC_Database.zip'
 destination_path = '/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files'

@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 # Get the current date and time
 current_date = datetime.now()
 yesterday = current_date - timedelta(days=1)
-date = today = current_date.strftime('%Y%m%d')
+date = yesterday.strftime('%Y%m%d')
 
 # Extracts a file from a zip file to a specified path
 def extract_file(zip_file_path, file_to_extract, extraction_path):
