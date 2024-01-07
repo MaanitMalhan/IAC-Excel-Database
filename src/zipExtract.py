@@ -2,9 +2,9 @@ import zipfile, os, time
 from datetime import datetime, timedelta
 
 # Get the current date and time
-current_date = datetime.now()
-yesterday = current_date - timedelta(days=1)
-date = yesterday.strftime('%Y%m%d')
+#current_date = datetime.now()
+#yesterday = current_date - timedelta(days=1)
+#date = yesterday.strftime('%Y%m%d')
 
 # Extracts a file from a zip file to a specified path
 def extract_file(zip_file_path, file_to_extract, extraction_path):
@@ -14,7 +14,7 @@ def extract_file(zip_file_path, file_to_extract, extraction_path):
             # Extract the specified file to the extraction path
             zip_ref.extract(file_to_extract, extraction_path)
 
-        print(f"File '{file_to_extract}' extracted successfully to '{extraction_path}'.")
+        #print(f"File '{file_to_extract}' extracted successfully to '{extraction_path}'.")
 
     except zipfile.BadZipFile as e:
         print(f"Error: {zip_file_path} is not a valid zip file.")
@@ -24,12 +24,12 @@ def extract_file(zip_file_path, file_to_extract, extraction_path):
         print(f"An error occurred: {str(e)}")
 
 # Example usage:
-zip_file_path = '/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database.zip'
-file_to_extract = f'IAC_Database_{date}.xls'
-extraction_path = '/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files'
+#zip_file_path = '/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database.zip'
+#file_to_extract = f'IAC_Database_{date}.xls'
+#extraction_path = '/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files'
 
 # Make sure the extraction directory exists
-os.makedirs(extraction_path, exist_ok=True)
+#os.makedirs(extraction_path, exist_ok=True)
 
-extract_file(zip_file_path, file_to_extract, extraction_path)
-print("File extracted successfully!")
+#extract_file(zip_file_path, file_to_extract, extraction_path)
+#print("File extracted successfully!")

@@ -7,7 +7,6 @@ import pandas as pd
 # Get the current date and time
 current_date = datetime.now()
 
-# Calculate the date from yesterday
 date = current_date.strftime('%Y%m%d')
 
 
@@ -33,5 +32,5 @@ def convert_xls_to_xlsx(input_path, output_path):
 input_path = f"/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database_{date}.xls"
 output_path = f"/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database_{date}.xlsx"
     
-convert_xls_to_xlsx(input_path, output_path)
-print("File converted successfully!")
+#convert_xls_to_xlsx(input_path, output_path)
+#print("File converted successfully!")

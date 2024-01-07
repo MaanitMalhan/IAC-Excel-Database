@@ -11,7 +11,6 @@ def download_file(url, destination):
             with open(destination, 'wb') as file:
                 for chunk in response.iter_content(chunk_size=128):
                     file.write(chunk)
-            print(f"File downloaded successfully to {destination}")
         else:
             print(f"Failed to download file. Status code: {response.status_code}")
 
@@ -19,8 +18,8 @@ def download_file(url, destination):
         print(f"An error occurred: {str(e)}")
 
 # Example usage:
-file_url = 'https://iac.university/storage/IAC_Database.zip'
-destination_path = '/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database.zip'
+#file_url = 'https://iac.university/storage/IAC_Database.zip'
+#destination_path = '/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database.zip'
 
-download_file(file_url, destination_path)
-print("File downloaded successfully!")
+#download_file(file_url, destination_path)
+#print("File downloaded successfully!")
