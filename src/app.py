@@ -30,6 +30,7 @@ file_to_extract = f'IAC_Database_{date}.xls'
 extraction_path = '/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files'
 
 extract_file(zip_file_path, file_to_extract, extraction_path)
+
 print(f"File '{file_to_extract}' extracted successfully to '{extraction_path}'.")
 
 #Convert Format from XLS to XLSX
@@ -54,7 +55,7 @@ destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-i
 print("Assessment data extracted successfully!")
 
 #Extract Recommendation data
-source_workbook = openpyxl.load_workbook("/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database_20240107.xlsx")
+source_workbook = openpyxl.load_workbook(f"/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database_{date}.xlsx")
 source_sheet = source_workbook['RECC5']  #name of your source sheet
 
 destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
@@ -68,7 +69,7 @@ for i in range(1, 10):
     target_value = 'UC230' + str(i)
     copy_rows_with_value(source_sheet, destination_workbook, destination_sheet, target_value, target_column_index)
 
-for i in range(10, 17):
+for i in range(10, 100):
     target_value = 'UC23' + str(i)
     copy_rows_with_value(source_sheet, destination_workbook, destination_sheet, target_value, target_column_index)
 
@@ -76,6 +77,6 @@ destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-i
 print("Recommendation data extracted successfully!")
 
 #Term copy 
-copy_term()
+copy_term(date)
 print("Term data copied successfully!")
 print("File Prepared!")

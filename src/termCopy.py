@@ -1,8 +1,10 @@
 import openpyxl
+from datetime import datetime, timedelta
 
-def copy_term():
+
+def copy_term(date):
 # Load the source workbook
-    source_workbook = openpyxl.load_workbook("/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database_20240107.xlsx")
+    source_workbook = openpyxl.load_workbook(f"/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database_{date}.xlsx")
     source_sheet = source_workbook['Terms']  # Replace 'Sheet1' with the name of your source sheet
 
 # Load the destination workbook
