@@ -80,3 +80,5 @@ print("Recommendation data extracted successfully!")
 copy_term(date)
 print("Term data copied successfully!")
 print("File Prepared!")
+
+exit()
