@@ -1,9 +1,9 @@
 import openpyxl 
 from openpyxl.styles import Font
 
-def arc_code_sheet():
+def arc_code_sheet(workbook):
     # Load the destination workbook
-    destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/test.xlsx')
+    destination_workbook = openpyxl.load_workbook(workbook)
     arc_sheet = destination_workbook.create_sheet(title="ARC_CODES")
     
     
@@ -240,8 +240,7 @@ def arc_code_sheet():
     arc_sheet['A96'] = "4.82"
     arc_sheet['B96'] = "Fees"
 
-    arc_destination_sheet = destination_workbook['ARC_CODES']  
-    destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/test.xlsx')
-    print("ARC_CODES sheet created successfully!")
+    #arc_destination_sheet = destination_workbook['ARC_CODES']  
+    #destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/test.xlsx')
+    #print("ARC_CODES sheet created successfully!")
     
-arc_code_sheet()

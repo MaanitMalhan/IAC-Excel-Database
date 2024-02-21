@@ -5,6 +5,7 @@ from assessSheetExtraction import copy_rows_with_values, copy_first_rows
 from reccSheetExtraction import copy_rows_with_value, copy_first_row
 from termCopy import copy_term
 from datetime import datetime, timedelta
+from arcCodes import arc_code_sheet
 import openpyxl
 
 
@@ -79,6 +80,10 @@ print("Recommendation data extracted successfully!")
 #Term copy 
 copy_term(date)
 print("Term data copied successfully!")
+#ARC codes
+arc_workbook = '/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx'
+arc_code_sheet(arc_workbook)
+print("ARC Codes imported successfully!")
 print("File Prepared!")
 
 exit()
