@@ -18,7 +18,7 @@ def cost_savings(workbook):
 
     total = f'=SUM(K2:K{populated_rows})'
     destination_sheet[f'K{populated_rows+1}'] = total
-    return total
+    return populated_rows+1
 
 
 
@@ -27,6 +27,8 @@ def calculations(workbook):
     destination_workbook = workbook
     calc_sheet = destination_workbook.create_sheet(title="calculation")
     destination_sheet = destination_workbook['calculation']
+    recc_sheet = destination_workbook['RECC']
+    rec_location = cost_savings(destination_workbook)
 
     #Add recommended savings, plant energy costs and number of reccs
     destination_sheet['A1'] = 'Total_number_of_assessments'
@@ -38,8 +40,6 @@ def calculations(workbook):
     destination_sheet['A2'] = count_assem(destination_workbook['ASSESS'])
     destination_sheet['B2'] = count_recc(destination_workbook['RECC'])
     destination_sheet['C2'] = destination_sheet['B2'].value / destination_sheet['A2'].value
-
-    destination_sheet['D2'] = cost_savings(destination_workbook)
-    
+    destination_sheet['D2'] = recc_sheet[f'K{rec_location}'].value #will return formla cuz that is the value in the cell figure out how to get the number 
 
 
