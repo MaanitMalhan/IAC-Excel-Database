@@ -3,7 +3,7 @@ from openpyxl.styles import Font
 
 def arc_code_sheet(workbook):
     # Load the destination workbook
-    destination_workbook = openpyxl.load_workbook(workbook)
+    destination_workbook = workbook
     arc_sheet = destination_workbook.create_sheet(title="ARC_CODES")
     
     
@@ -212,7 +212,7 @@ def arc_code_sheet(workbook):
     arc_sheet['A83'] = "4.6"
     arc_sheet['B83'] = "Reduction of Downtime"
     arc_sheet['A84'] = "4.61"
-    arc_sheet['B84'] = "Maintainance"
+    arc_sheet['B84'] = "Maintenance"
     arc_sheet['A85'] = "4.62"
     arc_sheet['B85'] = "Quick Change"
     arc_sheet['A86'] = "4.63"

@@ -34,6 +34,18 @@ def copy_rows_with_value(source_sheet, target_workbook, target_sheet, target_val
             for source_cell in row:
                 target_sheet.cell(row=target_row, column=source_cell.column, value=source_cell.value)
 
+def count_recc(target_sheet):
+    count = 0
+    column_to_check = 'A'
+    populated_rows = 0
+    # Iterate over rows in the column and count populated ones
+    for row in target_sheet.iter_rows(min_row=1, max_row=target_sheet.max_row, min_col=1, max_col=1):
+        cell_value = row[0].value
+        if cell_value is not None and str(cell_value).strip() != '':
+            populated_rows += 1
+    populated_rows -= 1
+    return populated_rows
+
 # Target column index 
 #target_column_index = 2  
 

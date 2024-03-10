@@ -1,8 +1,9 @@
 from download import download_file
 from zipExtract import extract_file
 from convertFormat import convert_xls_to_xlsx
-from assessSheetExtraction import copy_rows_with_values, copy_first_rows
+from assessSheetExtraction import copy_rows_with_values, copy_first_rows, count_assem
 from reccSheetExtraction import copy_rows_with_value, copy_first_row
+from calculcation import calculations
 from termCopy import copy_term
 from datetime import datetime, timedelta
 from arcCodes import arc_code_sheet
@@ -52,6 +53,7 @@ target_value = 'UC'
 
 copy_first_rows(source_sheet, destination_workbook, destination_sheet)
 copy_rows_with_values(source_sheet, destination_workbook, destination_sheet, target_value)
+count_assem(destination_sheet)
 destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
 print("Assessment data extracted successfully!")
 
@@ -81,9 +83,14 @@ print("Recommendation data extracted successfully!")
 copy_term(date)
 print("Term data copied successfully!")
 #ARC codes
-arc_workbook = '/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx'
-arc_code_sheet(arc_workbook)
+destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+arc_code_sheet(destination_workbook)
 print("ARC Codes imported successfully!")
+#calculations 
+destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+calculations(destination_workbook)
+destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+print("Calculations done successfully!")
+#save the workbook
 print("File Prepared!")
-
 exit()

@@ -6,23 +6,11 @@ current_date = datetime.now()
 yesterday = current_date - timedelta(days=1)    
 date = yesterday.strftime('%Y%m%d')
 
-# Load the source workbook
-#source_workbook = openpyxl.load_workbook("/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database_20240107.xlsx")
-#source_sheet = source_workbook['ASSESS']  #name of your source sheet
-
-# Load the destination workbook
-
-#destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
-#default_sheet = destination_workbook.active
-#default_sheet.title = "ASSESS"  
-
-#destination_sheet = destination_workbook['ASSESS']
 
 def copy_first_rows(source_sheet, target_workbook, target_sheet):
     for source_cell in source_sheet[1]:
         target_sheet.cell(row=1, column=source_cell.column, value=source_cell.value)
 
-#copy_first_row(source_sheet, destination_workbook, destination_sheet)
 
 def copy_rows_with_values(source_sheet, target_workbook, target_sheet, target_value):
     for row in source_sheet.iter_rows():
@@ -34,12 +22,19 @@ def copy_rows_with_values(source_sheet, target_workbook, target_sheet, target_va
                 for source_cell in row:
                     target_sheet.cell(row=target_row, column=source_cell.column, value=source_cell.value)
 
+def count_assem(target_sheet):
+    count = 0
+    column_to_check = 'A'
+    populated_rows = 0
+    # Iterate over rows in the column and count populated ones
+    for row in target_sheet.iter_rows(min_row=1, max_row=target_sheet.max_row, min_col=1, max_col=1):
+        cell_value = row[0].value
+        if cell_value is not None and str(cell_value).strip() != '':
+            populated_rows += 1
+    populated_rows -= 1
+    return populated_rows
+
+
 
 # Specify the value you want to find and copy
 target_value = 'UC'
-
-# Copy rows with the target value from the source to the target workbook
-#copy_rows_with_value(source_sheet, destination_workbook, destination_sheet, target_value)
-
-# Save the changes to the destination workbook
-#destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
