@@ -7,6 +7,7 @@ from calculcation import calculations
 from termCopy import copy_term
 from datetime import datetime, timedelta
 from arcCodes import arc_code_sheet
+from labels import label_for_assem, label_for_recc
 import openpyxl
 
 
@@ -54,6 +55,7 @@ target_value = 'UC'
 copy_first_rows(source_sheet, destination_workbook, destination_sheet)
 copy_rows_with_values(source_sheet, destination_workbook, destination_sheet, target_value)
 count_assem(destination_sheet)
+label_for_assem(destination_sheet)
 destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
 print("Assessment data extracted successfully!")
 
@@ -75,6 +77,8 @@ for i in range(1, 10):
 for i in range(10, 100):
     target_value = 'UC23' + str(i)
     copy_rows_with_value(source_sheet, destination_workbook, destination_sheet, target_value, target_column_index)
+
+label_for_recc(destination_sheet)
 
 destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
 print("Recommendation data extracted successfully!")
