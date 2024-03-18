@@ -35,13 +35,15 @@ def calculations(workbook):
     destination_sheet['B1'] = 'Total_number_of_recommendations'
     destination_sheet['C1'] = 'Average_number_of_recommendations_per_assessment'
     destination_sheet['D1'] = 'Total_recommended_savings'
-    destination_sheet['E1'] = 'Total_costs'
+    destination_sheet['E1'] = 'Total_Savings_From_Recommendations'
+    destination_sheet['F1'] = 'Avg_Savings_From_recommendation'
+    destination_sheet['G1'] = 'Avg_Implementation_Cost'
     
     #Add recommended savings, plant energy costs and number of reccs
     destination_sheet['A2'] = count_assem(destination_workbook['ASSESS'])
     destination_sheet['B2'] = count_recc(destination_workbook['RECC'])
     destination_sheet['C2'] = destination_sheet['B2'].value / destination_sheet['A2'].value
-    destination_sheet['D2'] = recc_sheet[f'K{rec_location}'].value #will return formula cuz that is the value in the cell figure out how to get the number 
+    destination_sheet['D2'] = recc_sheet[f'K{rec_location}'].value #will return formula cuz that is the value in the cell figure out how to get the number
 
 
 
