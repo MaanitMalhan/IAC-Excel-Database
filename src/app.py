@@ -55,8 +55,8 @@ target_value = 'UC'
 copy_first_rows(source_sheet, destination_workbook, destination_sheet)
 copy_rows_with_values(source_sheet, destination_workbook, destination_sheet, target_value)
 count_assem(destination_sheet)
-label_for_assem(destination_sheet)
 destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+label_for_assem()
 print("Assessment data extracted successfully!")
 
 #Extract Recommendation data
@@ -78,9 +78,10 @@ for i in range(10, 100):
     target_value = 'UC23' + str(i)
     copy_rows_with_value(source_sheet, destination_workbook, destination_sheet, target_value, target_column_index)
 
-label_for_recc(destination_sheet)
 
 destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+label_for_recc()
+
 print("Recommendation data extracted successfully!")
 
 #Term copy 
