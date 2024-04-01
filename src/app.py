@@ -1,6 +1,6 @@
 from download import download_file
 from zipExtract import extract_file
-from calculcation import cost_savings, calculations
+from calculcation import cost_savings, calculations, imp_cost
 from convertFormat import convert_xls_to_xlsx
 from assessSheetExtraction import copy_rows_with_values, copy_first_rows, count_assem
 from reccSheetExtraction import copy_rows_with_value, copy_first_row
@@ -96,7 +96,11 @@ print("ARC Codes imported successfully!")
 
 
 destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
-print(cost_savings(destination_workbook))
+cost_savings(destination_workbook, 'K')
+cost_savings(destination_workbook, 'O')
+cost_savings(destination_workbook, 'S')
+cost_savings(destination_workbook, 'W')
+imp_cost(destination_workbook, 'G')
 calculations(destination_workbook)
 destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
 
