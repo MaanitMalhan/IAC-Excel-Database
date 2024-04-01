@@ -1,13 +1,14 @@
 from download import download_file
 from zipExtract import extract_file
+from calculcation import cost_savings, calculations
 from convertFormat import convert_xls_to_xlsx
 from assessSheetExtraction import copy_rows_with_values, copy_first_rows, count_assem
 from reccSheetExtraction import copy_rows_with_value, copy_first_row
-from calculcation import calculations
 from termCopy import copy_term
 from datetime import datetime, timedelta
 from arcCodes import arc_code_sheet
 from labels import label_for_assem, label_for_recc
+from plots import plot_creation, plotly_graphs_in_excel
 import openpyxl
 
 
@@ -90,12 +91,16 @@ print("Term data copied successfully!")
 #ARC codes
 destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
 arc_code_sheet(destination_workbook)
+destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
 print("ARC Codes imported successfully!")
-#calculations 
+
+
 destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+print(cost_savings(destination_workbook))
 calculations(destination_workbook)
 destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+
 print("Calculations done successfully!")
-#save the workbook
+
 print("File Prepared!")
 exit()

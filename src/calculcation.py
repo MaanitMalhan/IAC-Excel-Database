@@ -1,7 +1,12 @@
 import openpyxl
 from assessSheetExtraction import count_assem
 from reccSheetExtraction import count_recc
+from openpyxl.styles import Font
 #Add recommended savings, plant energy costs and number of reccs
+
+
+
+
 
 def cost_savings(workbook):
     destination_workbook = workbook
@@ -16,9 +21,11 @@ def cost_savings(workbook):
         if cell_value is not None and str(cell_value).strip() != '':
             populated_rows += 1
 
-    total = f'=SUM(K2:K{populated_rows})'
-    destination_sheet[f'K{populated_rows+1}'] = total
-    return populated_rows+1
+    destination_sheet[f'K{populated_rows+1}'] = 'Total_Primary_recommended_savings'
+    destination_sheet[f'K{populated_rows+1}'].font = Font(bold=True)
+    destination_sheet[f'K{populated_rows+2}'] = f'=SUM(K2:K{populated_rows})'
+    return populated_rows+2
+    
 
 
 
@@ -42,8 +49,8 @@ def calculations(workbook):
     #Add recommended savings, plant energy costs and number of reccs
     destination_sheet['A2'] = count_assem(destination_workbook['ASSESS'])
     destination_sheet['B2'] = count_recc(destination_workbook['RECC'])
-    destination_sheet['C2'] = destination_sheet['B2'].value / destination_sheet['A2'].value
-    destination_sheet['D2'] = recc_sheet[f'K{rec_location}'].value #will return formula cuz that is the value in the cell figure out how to get the number
 
+    destination_sheet['C2'] = destination_sheet['B2'].value / destination_sheet['A2'].value
+#    destination_sheet['D2'] = recc_sheet[f'K{rec_location}'].value
 
 
