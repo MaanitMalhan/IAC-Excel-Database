@@ -124,18 +124,21 @@ sheet_name = "RECC"
 
 
 replace_cell_value(file_path, sheet_name, f"G{populated+2}")
+replace_cell_value(file_path, sheet_name, f"G{populated+4}")
 replace_cell_value(file_path, sheet_name, f"K{populated+2}")
 replace_cell_value(file_path, sheet_name, f"O{populated+2}")
+replace_cell_value(file_path, sheet_name, f"O{populated+4}")
 replace_cell_value(file_path, sheet_name, f"S{populated+2}")
 replace_cell_value(file_path, sheet_name, f"W{populated+2}")
 replace_cell_value(file_path, sheet_name, f"W{populated+4}")
+
 
 print('formula replaced with calculated values!')
 
 workbook.close()
 #Plot Creation
 destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx', data_only=True)
-plot_creation(destination_workbook)
+#plot_creation(destination_workbook)
 
 destination_workbook.close()
 
