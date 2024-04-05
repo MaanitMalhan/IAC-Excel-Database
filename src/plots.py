@@ -19,10 +19,8 @@ def plot_creation(workbook):
     data = dict(
         character=["Total Assessment", "Total Recommendations","Avg # of Recommendations per assessment","Total Savings", "Avg Savings from Recommendations","Primary Savings", "Secondary Savings", "Tertiary Savings", "Quaternary Savings", "Total Implementation Cost"],
         parent=["", "", "Total Assessment", "Total Assessment","Total Recommendations", "Total Recommendations", "Total Recommendations", "Total Recommendations","Total Assessment", "Total Recommendations"],
-        value=[calc_sheet['A2'].value,calc_sheet['B2'].value,calc_sheet['C2'].value, recc_sheet[f'O{populated_rows+4}'], recc_sheet[f'W{populated_rows+4}'].value, recc_sheet[f'K{populated_rows+2}'].value, recc_sheet[f'O{populated_rows+2}'].value, recc_sheet[f'S{populated_rows+2}'].value, recc_sheet[f'W{populated_rows+2}'].value,recc_sheet[f'G{populated_rows+2}'].value]
-        )
-    
-
+        value=[calc_sheet['A2'].value,calc_sheet['B2'].value,calc_sheet['C2'].value,recc_sheet[f'O{populated_rows+4}'].value,recc_sheet[f'W{populated_rows+4}'].value,recc_sheet[f'K{populated_rows+2}'].value,recc_sheet[f'O{populated_rows+2}'].value,recc_sheet[f'S{populated_rows+2}'].value,recc_sheet[f'W{populated_rows+2}'].value,recc_sheet[f'G{populated_rows+2}'].value]
+    )
     
     fig = plotly.express.sunburst(
         data,
