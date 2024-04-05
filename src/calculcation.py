@@ -21,13 +21,18 @@ def cost_savings(workbook, column):
         if cell_value is not None and str(cell_value).strip() != '':
             populated_rows += 1
 
-    destination_sheet[f'{column_to_check}{populated_rows+1}'] = 'Total_recommended_savings'
+    destination_sheet[f'{column_to_check}{populated_rows+1}'] = 'Total_type_recommended_savings'
     destination_sheet[f'{column_to_check}{populated_rows+1}'].font = Font(bold=True)
     destination_sheet[f'{column_to_check}{populated_rows+2}'] = f'=SUM({column_to_check}2:{column_to_check}{populated_rows})'
     if column == 'W':
         destination_sheet[f'{column_to_check}{populated_rows+3}'] = 'Average_Savings_From_Recommendation'
         destination_sheet[f'{column_to_check}{populated_rows+3}'].font = Font(bold=True)
         destination_sheet[f'{column_to_check}{populated_rows+4}'] = f'=AVERAGE(K{populated_rows+2},O{populated_rows+2},S{populated_rows+2},W{populated_rows+2})'
+    if column == 'O':
+        destination_sheet[f'{column_to_check}{populated_rows+3}'] = 'Absolute_Savings_From_Recommendation'
+        destination_sheet[f'{column_to_check}{populated_rows+3}'].font = Font(bold=True)
+        destination_sheet[f'{column_to_check}{populated_rows+4}'] = f'=SUM(K{populated_rows+2},O{populated_rows+2},S{populated_rows+2},W{populated_rows+2})'
+    
     return populated_rows+2
 
 def imp_cost(workbook, column):
@@ -46,7 +51,12 @@ def imp_cost(workbook, column):
     destination_sheet[f'{column_to_check}{populated_rows+1}'] = 'Total_Implementation_Cost'
     destination_sheet[f'{column_to_check}{populated_rows+1}'].font = Font(bold=True)
     destination_sheet[f'{column_to_check}{populated_rows+2}'] = f'=SUM({column_to_check}2:{column_to_check}{populated_rows})'
+    if column == 'G':
+        destination_sheet[f'{column_to_check}{populated_rows+3}'] = 'Average_Implementation_Cost'
+        destination_sheet[f'{column_to_check}{populated_rows+3}'].font = Font(bold=True)
+        destination_sheet[f'{column_to_check}{populated_rows+4}'] = f'=G{populated_rows+2}/{populated_rows}'
     return populated_rows+2
+
 
 
 
@@ -61,10 +71,7 @@ def calculations(workbook):
     destination_sheet['A1'] = 'Total_number_of_assessments'
     destination_sheet['B1'] = 'Total_number_of_recommendations'
     destination_sheet['C1'] = 'Average_number_of_recommendations_per_assessment'
-    destination_sheet['D1'] = 'Total_recommended_savings'
-    destination_sheet['E1'] = 'Total_Savings_From_Recommendations'
-    destination_sheet['F1'] = 'Avg_Savings_From_recommendation'
-    destination_sheet['G1'] = 'Avg_Implementation_Cost'
+
     
     #Add recommended savings, plant energy costs and number of reccs
     destination_sheet['A2'] = count_assem(destination_workbook['ASSESS'])

@@ -8,8 +8,12 @@ from termCopy import copy_term
 from datetime import datetime, timedelta
 from arcCodes import arc_code_sheet
 from labels import label_for_assem, label_for_recc
-from plots import plot_creation, plotly_graphs_in_excel
+from formula_replace import pop_rows, replace_cell_value
+from plots import plot_creation
 import openpyxl
+import xlwings as xw
+
+#MAKE A FILE NAME VAR TO SAVE EVERYTHING TO MAKE IT CHOOSE DIR
 
 
 #create SNE workbook
@@ -103,8 +107,37 @@ cost_savings(destination_workbook, 'W')
 imp_cost(destination_workbook, 'G')
 calculations(destination_workbook)
 destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
-
 print("Calculations done successfully!")
 
-print("File Prepared!")
+destination_workbook.create_sheet(title="Graphs")
+
+destination_workbook.close()
+source_workbook.close()
+
+#formula replacement with calculated values
+workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+populated = pop_rows(workbook)
+
+
+file_path = "/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx"
+sheet_name = "RECC"
+
+
+replace_cell_value(file_path, sheet_name, f"G{populated+2}")
+replace_cell_value(file_path, sheet_name, f"K{populated+2}")
+replace_cell_value(file_path, sheet_name, f"O{populated+2}")
+replace_cell_value(file_path, sheet_name, f"S{populated+2}")
+replace_cell_value(file_path, sheet_name, f"W{populated+2}")
+replace_cell_value(file_path, sheet_name, f"W{populated+4}")
+
+print('formula replaced with calculated values!')
+
+workbook.close()
+#Plot Creation
+destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx', data_only=True)
+plot_creation(destination_workbook)
+
+destination_workbook.close()
+
+print("File Prepared! and saved as 'SNE_IAC_Database.xlsx' plots saved in file")
 exit()
