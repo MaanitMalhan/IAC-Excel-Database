@@ -16,9 +16,11 @@ def copy_term(date):
         for cell in row:
             destination_sheet[cell.coordinate].value = cell.value
    
-    img = openpyxl.drawing.image.Image('IAC_PREF_MARCH_18_2024.png')
+    img = openpyxl.drawing.image.Image('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/src/IAC_PREF_APRIL_10_2024.png')
     img.anchor = 'K1'
     destination_sheet.add_image(img)
+
+    destination_sheet['K60'] = 'In Image SNE IAC Data as of APRIL 10, 2024'
 
 # Save the changes to the destination workbook
     destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')

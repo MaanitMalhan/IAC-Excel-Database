@@ -138,8 +138,9 @@ print('formula replaced with calculated values!')
 workbook.close()
 #Plot Creation
 destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx', data_only=True)
-#plot_creation(destination_workbook)
+plot_creation(destination_workbook)
 
+destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
 destination_workbook.close()
 
 print("File Prepared! and saved as 'SNE_IAC_Database.xlsx' plots saved in file")
