@@ -13,17 +13,19 @@ from plots import plot_creation
 import openpyxl
 import xlwings as xw
 
-#MAKE A FILE NAME VAR TO SAVE EVERYTHING TO MAKE IT CHOOSE DIR
+#Universal Directory this is the path where all files will be saved ==============================================================================================
+universal_dir = '/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/' 
+#MAKE SURE TO USE THIS FORMAT AND END THE PATH WITH 'excel-data-iac/files/' OR THERE WILL BE ERRORS================================================================
 
 
 #create SNE workbook
 workbook = openpyxl.Workbook()
-workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+workbook.save(f'{universal_dir}/SNE_IAC_Database.xlsx')
 print("File Created!")
 
 #Download ZIP from server 
 file_url = 'https://iac.university/storage/IAC_Database.zip'
-destination_path = '/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database.zip'
+destination_path = f'{universal_dir}IAC_Database.zip'
 
 download_file(file_url, destination_path)
 print(f"File downloaded successfully to {destination_path}")
@@ -33,25 +35,25 @@ current_date = datetime.now()
 yesterday = current_date - timedelta(days=1)    
 date = current_date.strftime('%Y%m%d')
 
-zip_file_path = '/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database.zip'
+zip_file_path = f'{universal_dir}IAC_Database.zip'
 file_to_extract = f'IAC_Database_{date}.xls'
-extraction_path = '/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files'
+extraction_path = universal_dir
 
 extract_file(zip_file_path, file_to_extract, extraction_path)
 
 print(f"File '{file_to_extract}' extracted successfully to '{extraction_path}'.")
 
 #Convert Format from XLS to XLSX
-input_path = f"/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database_{date}.xls"
-output_path = f"/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database_{date}.xlsx"
+input_path = f"{universal_dir}IAC_Database_{date}.xls"
+output_path = f"{universal_dir}IAC_Database_{date}.xlsx"
     
 convert_xls_to_xlsx(input_path, output_path)
 
 #Extract Assesment data
-source_workbook = openpyxl.load_workbook(f"/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database_{date}.xlsx")
+source_workbook = openpyxl.load_workbook(f"{universal_dir}IAC_Database_{date}.xlsx")
 source_sheet = source_workbook['ASSESS']  #name of your source sheet
 
-destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+destination_workbook = openpyxl.load_workbook(f'{universal_dir}SNE_IAC_Database.xlsx')
 default_sheet = destination_workbook.active
 default_sheet.title = "ASSESS"  
 destination_sheet = destination_workbook['ASSESS']
@@ -60,15 +62,15 @@ target_value = 'UC'
 copy_first_rows(source_sheet, destination_workbook, destination_sheet)
 copy_rows_with_values(source_sheet, destination_workbook, destination_sheet, target_value)
 count_assem(destination_sheet)
-destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+destination_workbook.save(f'{universal_dir}SNE_IAC_Database.xlsx')
 label_for_assem()
 print("Assessment data extracted successfully!")
 
 #Extract Recommendation data
-source_workbook = openpyxl.load_workbook(f"/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database_{date}.xlsx")
+source_workbook = openpyxl.load_workbook(f"{universal_dir}IAC_Database_{date}.xlsx")
 source_sheet = source_workbook['RECC5']  #name of your source sheet
 
-destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+destination_workbook = openpyxl.load_workbook(f"{universal_dir}SNE_IAC_Database.xlsx")
 new_sheet = destination_workbook.create_sheet(title="RECC")
 destination_sheet = destination_workbook['RECC']
 target_column_index = 2  
@@ -84,7 +86,7 @@ for i in range(10, 100):
     copy_rows_with_value(source_sheet, destination_workbook, destination_sheet, target_value, target_column_index)
 
 
-destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+destination_workbook.save(f"{universal_dir}SNE_IAC_Database.xlsx")
 label_for_recc()
 
 print("Recommendation data extracted successfully!")
@@ -93,20 +95,20 @@ print("Recommendation data extracted successfully!")
 copy_term(date)
 print("Term data copied successfully!")
 #ARC codes
-destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+destination_workbook = openpyxl.load_workbook(f"{universal_dir}SNE_IAC_Database.xlsx")
 arc_code_sheet(destination_workbook)
-destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+destination_workbook.save(f"{universal_dir}SNE_IAC_Database.xlsx")
 print("ARC Codes imported successfully!")
 
 
-destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+destination_workbook = openpyxl.load_workbook(f"{universal_dir}SNE_IAC_Database.xlsx")
 cost_savings(destination_workbook, 'K')
 cost_savings(destination_workbook, 'O')
 cost_savings(destination_workbook, 'S')
 cost_savings(destination_workbook, 'W')
 imp_cost(destination_workbook, 'G')
 calculations(destination_workbook)
-destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+destination_workbook.save(f"{universal_dir}SNE_IAC_Database.xlsx")
 print("Calculations done successfully!")
 
 destination_workbook.create_sheet(title="Graphs")
@@ -115,11 +117,11 @@ destination_workbook.close()
 source_workbook.close()
 
 #formula replacement with calculated values
-workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+workbook = openpyxl.load_workbook(f"{universal_dir}SNE_IAC_Database.xlsx")
 populated = pop_rows(workbook)
 
 
-file_path = "/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx"
+file_path = f"{universal_dir}SNE_IAC_Database.xlsx"
 sheet_name = "RECC"
 
 
@@ -137,10 +139,10 @@ print('formula replaced with calculated values!')
 
 workbook.close()
 #Plot Creation
-destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx', data_only=True)
+destination_workbook = openpyxl.load_workbook(f"{universal_dir}SNE_IAC_Database.xlsx", data_only=True)
 plot_creation(destination_workbook)
 
-destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+destination_workbook.save(f"{universal_dir}SNE_IAC_Database.xlsx")
 destination_workbook.close()
 
 print("File Prepared! and saved as 'SNE_IAC_Database.xlsx' plots saved in file")

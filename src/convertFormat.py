@@ -28,9 +28,3 @@ def convert_xls_to_xlsx(input_path, output_path):
 
     print(f"Conversion complete. Output file saved at: {output_path}")
 
-
-input_path = f"/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database_{date}.xls"
-output_path = f"/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database_{date}.xlsx"
-    
-#convert_xls_to_xlsx(input_path, output_path)
-#print("File converted successfully!")

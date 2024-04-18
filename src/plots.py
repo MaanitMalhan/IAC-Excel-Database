@@ -2,6 +2,7 @@ import plotly.express
 import plotly.io as pio
 import plotly.graph_objects as go
 import openpyxl
+from app import *
 
 
 def plot_creation(workbook):
@@ -34,7 +35,7 @@ def plot_creation(workbook):
 
 
 
-    pio.write_html(fig, file='/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database_plots.html', auto_open=True)
+    pio.write_html(fig, file=f'{universal_dir}SNE_IAC_Database_plots.html', auto_open=True)
 
 
 

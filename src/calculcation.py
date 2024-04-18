@@ -2,16 +2,11 @@ import openpyxl
 from assessSheetExtraction import count_assem
 from reccSheetExtraction import count_recc
 from openpyxl.styles import Font
-#Add recommended savings, plant energy costs and number of reccs
-
-
-
 
 
 def cost_savings(workbook, column):
     destination_workbook = workbook
     destination_sheet = destination_workbook['RECC']
-    #Add recommended savings, plant energy costs and number of reccs
     count = 0
     column_to_check = column
     populated_rows = 0

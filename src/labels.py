@@ -1,7 +1,8 @@
 import openpyxl
-
+from app import *
 def label_for_assem():
-    destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+    
+    destination_workbook = openpyxl.load_workbook(f'{universal_dir}SNE_IAC_Database.xlsx')
     destination_sheet = destination_workbook['ASSESS']  
 
     print("Labeling ASSESS sheet...")  
@@ -62,11 +63,11 @@ def label_for_assem():
     destination_sheet['BC1'].value = 'Total Yearly Other Solid(Haz) Disposals(lbs)'
     destination_sheet['BD1'].value = 'Total Yearly Other Gaseous Waste Cost($)'
     destination_sheet['BE1'].value = 'Total Yearly Other Gaseous Waste(lbs)'
-    destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+    destination_workbook.save(f'{universal_dir}SNE_IAC_Database.xlsx')
     print("ASSESS sheet labeled.")
 
 def label_for_recc():
-    destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+    destination_workbook = openpyxl.load_workbook(f'{universal_dir}SNE_IAC_Database.xlsx')
     destination_sheet = destination_workbook['ASSESS']  
     print("labelling for RECC sheet")
     destination_sheet['A1'].value = 'Assessment ID + Recommendation ID'

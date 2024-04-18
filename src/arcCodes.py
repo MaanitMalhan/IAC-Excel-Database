@@ -240,7 +240,4 @@ def arc_code_sheet(workbook):
     arc_sheet['A96'] = "4.82"
     arc_sheet['B96'] = "Fees"
 
-    #arc_destination_sheet = destination_workbook['ARC_CODES']  
-    #destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/test.xlsx')
-    #print("ARC_CODES sheet created successfully!")
     

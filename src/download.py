@@ -16,10 +16,3 @@ def download_file(url, destination):
 
     except Exception as e:
         print(f"An error occurred: {str(e)}")
-
-# Example usage:
-#file_url = 'https://iac.university/storage/IAC_Database.zip'
-#destination_path = '/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database.zip'
-
-#download_file(file_url, destination_path)
-#print("File downloaded successfully!")

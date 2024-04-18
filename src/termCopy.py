@@ -1,14 +1,14 @@
 import openpyxl
 from datetime import datetime, timedelta
-
+from app import *
 
 def copy_term(date):
 # Load the source workbook
-    source_workbook = openpyxl.load_workbook(f"/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database_{date}.xlsx")
+    source_workbook = openpyxl.load_workbook(f"{universal_dir}IAC_Database_{date}.xlsx")
     source_sheet = source_workbook['Terms']  
 
 # Load the destination workbook
-    destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+    destination_workbook = openpyxl.load_workbook(f'{universal_dir}SNE_IAC_Database.xlsx')
     new_sheet = destination_workbook.create_sheet(title="Terms")
     destination_sheet = destination_workbook['Terms']  
 
@@ -16,11 +16,11 @@ def copy_term(date):
         for cell in row:
             destination_sheet[cell.coordinate].value = cell.value
    
-    img = openpyxl.drawing.image.Image('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/src/IAC_PREF_APRIL_10_2024.png')
+    img = openpyxl.drawing.image.Image(f'{universal_dir}IAC_PREF_APRIL_10_2024.png')
     img.anchor = 'K1'
     destination_sheet.add_image(img)
 
     destination_sheet['K60'] = 'In Image SNE IAC Data as of APRIL 10, 2024'
 
 # Save the changes to the destination workbook
-    destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
+    destination_workbook.save(f'{universal_dir}SNE_IAC_Database.xlsx')

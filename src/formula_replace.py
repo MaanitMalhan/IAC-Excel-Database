@@ -3,7 +3,6 @@ import openpyxl
 
 
 def pop_rows(workbook):
-    #do a sunburst graph, parent: Tot_ASSM, Tot_RECC Child: median, mean, max, min Total saving type Primary, Secondary, Tertiary, Quaternary
     wb = workbook
     destination_sheet = wb['RECC']
     #Add recommended savings, plant energy costs and number of reccs

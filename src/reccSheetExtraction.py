@@ -6,17 +6,6 @@ current_date = datetime.now()
 yesterday = current_date - timedelta(days=1)    
 date = yesterday.strftime('%Y%m%d')
 
-# Load the source workbook
-#source_workbook = openpyxl.load_workbook("/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database_20240107.xlsx")
-#source_sheet = source_workbook['RECC5']  #name of your source sheet
-
-# Load the destination workbook
-
-#destination_workbook = openpyxl.load_workbook('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')
-
-#new_sheet = destination_workbook.create_sheet(title="RECC")
-
-#destination_sheet = destination_workbook['RECC']
 
 def copy_first_row(source_sheet, target_workbook, target_sheet):
     for source_cell in source_sheet[1]:
@@ -46,19 +35,3 @@ def count_recc(target_sheet):
     populated_rows -= 1
     return populated_rows
 
-# Target column index 
-#target_column_index = 2  
-
-# Copy rows with the target value from the source to the target workbook
-#for i in range(1, 10):
-#    target_value = 'UC230' + str(i)
-#    print(target_value)
-#    copy_rows_with_value(source_sheet, destination_workbook, destination_sheet, target_value, target_column_index)
-
-#for i in range(10, 17):
-#    target_value = 'UC23' + str(i)
-#    print(target_value)
-#    copy_rows_with_value(source_sheet, destination_workbook, destination_sheet, target_value, target_column_index)
-
-# Save the changes to the destination workbook
-#destination_workbook.save('/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/SNE_IAC_Database.xlsx')

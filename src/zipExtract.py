@@ -1,10 +1,6 @@
 import zipfile, os, time
 from datetime import datetime, timedelta
 
-# Get the current date and time
-#current_date = datetime.now()
-#yesterday = current_date - timedelta(days=1)
-#date = yesterday.strftime('%Y%m%d')
 
 # Extracts a file from a zip file to a specified path
 def extract_file(zip_file_path, file_to_extract, extraction_path):
@@ -23,13 +19,3 @@ def extract_file(zip_file_path, file_to_extract, extraction_path):
     except Exception as e:
         print(f"An error occurred: {str(e)}")
 
-# Example usage:
-#zip_file_path = '/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files/IAC_Database.zip'
-#file_to_extract = f'IAC_Database_{date}.xls'
-#extraction_path = '/Users/maanitmalhan/Documents/IAC_Center/excel-data-iac/files'
-
-# Make sure the extraction directory exists
-#os.makedirs(extraction_path, exist_ok=True)
-
-#extract_file(zip_file_path, file_to_extract, extraction_path)
-#print("File extracted successfully!")
